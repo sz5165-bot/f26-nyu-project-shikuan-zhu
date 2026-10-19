@@ -8,3 +8,333 @@
 }
 
 /* START BELOW */
+/* DESIGN TOKENS */
+:root {
+  --color-primary: #baf265;
+  --color-accent: #dcb2fa;
+  --color-text: #f5f3ee;
+  --color-background: #080808;
+  --color-surface: #39393f;
+
+  --font-heading: Impact, "Arial Narrow", sans-serif;
+  --font-body: "Noto Sans", sans-serif;
+
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-6: 48px;
+}
+
+/* PAGE FOUNDATION */
+body {
+  padding: var(--space-2);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.site-header,
+main,
+.site-footer {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+/* TYPOGRAPHY */
+h1,
+h2,
+h3,
+.brand,
+.eyebrow,
+.duration,
+.status,
+legend {
+  font-family: var(--font-heading);
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+.brand,
+.eyebrow,
+legend {
+  text-transform: uppercase;
+}
+
+h1 {
+  margin-bottom: var(--space-2);
+  font-size: 64px;
+  line-height: 1.05;
+}
+
+h2 {
+  margin-bottom: var(--space-3);
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+h3 {
+  margin-bottom: var(--space-1);
+  font-size: 32px;
+  line-height: 1.2;
+}
+
+p {
+  margin-bottom: var(--space-2);
+}
+
+.highlight {
+  display: block;
+  color: var(--color-primary);
+}
+
+/* HEADER / NAVIGATION */
+.site-header {
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-surface);
+}
+
+.brand {
+  font-size: 32px;
+  text-decoration: none;
+}
+
+.navigation-list {
+  margin-top: var(--space-2);
+  list-style: none;
+}
+
+.navigation-list li {
+  margin-top: var(--space-1);
+}
+
+.navigation-list a {
+  display: block;
+  width: fit-content;
+  padding: var(--space-1);
+  text-underline-offset: 4px;
+}
+
+.current-link {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* SECTION SPACING AND BOUNDARIES */
+section {
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-surface);
+}
+
+/* HERO SECTION */
+.eyebrow {
+  width: fit-content;
+  margin-bottom: var(--space-2);
+  padding: var(--space-1) var(--space-2);
+  border-radius: 24px;
+  background-color: var(--color-accent);
+  color: var(--color-background);
+  font-size: 20px;
+}
+
+.hero-description {
+  max-width: 60ch;
+  margin-bottom: var(--space-3);
+}
+
+/* BUTTONS AND ACTION LINKS */
+.button {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 48px;
+  margin-top: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid transparent;
+  border-radius: 32px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+}
+
+.button-primary {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+}
+
+.button-accent {
+  background-color: var(--color-accent);
+  color: var(--color-background);
+}
+
+.button-dark {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+/* TODAY'S PRACTICE SUMMARY */
+.practice-summary {
+  margin-bottom: var(--space-3);
+}
+
+.practice-summary p {
+  margin-bottom: var(--space-1);
+}
+
+.practice-summary label {
+  display: block;
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-1);
+}
+
+progress {
+  display: block;
+  width: 100%;
+  height: 16px;
+  accent-color: var(--color-primary);
+}
+
+/* PRACTICE CARDS */
+.practice-card {
+  margin-top: var(--space-2);
+  padding: var(--space-2);
+  border-radius: 24px;
+}
+
+.card-primary {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+}
+
+.card-surface {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+.card-accent {
+  background-color: var(--color-accent);
+  color: var(--color-background);
+}
+
+.duration,
+.status {
+  font-size: 20px;
+}
+
+.duration {
+  margin-top: var(--space-3);
+  margin-bottom: var(--space-1);
+}
+
+.status {
+  margin-bottom: 0;
+}
+
+/* YOUR PLAN AND PRACTICE WEEK */
+.panel {
+  padding: var(--space-2);
+  border-radius: 24px;
+  background-color: var(--color-surface);
+}
+
+.panel h3 {
+  font-size: 20px;
+}
+
+.plan-actions {
+  margin-top: var(--space-3);
+}
+
+.helper-text {
+  margin-top: var(--space-2);
+  margin-bottom: 0;
+}
+
+.week-list {
+  padding-left: var(--space-3);
+}
+
+.week-list li {
+  margin-bottom: var(--space-1);
+}
+
+.weekly-total {
+  margin-top: var(--space-3);
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* DAILY REFLECTION */
+.panel.card-accent {
+  background-color: var(--color-accent);
+  color: var(--color-background);
+}
+
+.panel .reflection-message {
+  max-width: 12ch;
+  margin-bottom: var(--space-3);
+  font-size: 48px;
+  line-height: 1.1;
+}
+
+.reflection-options {
+  min-width: 0;
+  border: 0;
+}
+
+.reflection-options legend {
+  margin-bottom: var(--space-2);
+  font-size: 20px;
+}
+
+.reflection-option {
+  display: block;
+  min-height: 48px;
+  margin-top: var(--space-1);
+  padding: var(--space-2);
+  border: 1px solid var(--color-background);
+  border-radius: 24px;
+}
+
+.reflection-option input {
+  margin-right: var(--space-1);
+  accent-color: var(--color-background);
+}
+
+/* FOOTER */
+.site-footer {
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
+  text-align: center;
+}
+
+.site-footer p {
+  margin-bottom: 0;
+}
