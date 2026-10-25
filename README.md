@@ -73,3 +73,52 @@ A cold start takes **1–3 minutes**. Here's why:
 * **Your work is saved automatically.** Even if the Codespace stops, the files are stored on GitHub. You won't lose anything.  
 * **You get a fixed number of free hours per month** through the GitHub Student Developer Pack. A cold start uses some of those hours just booting up, so it's worth keeping one Codespace alive while you're actively working.  
 * **If you need to work offline,** you can always install VS Code and Git locally instead but it does take some set up — Codespaces is a convenience, not a requirement.
+
+
+## **Weekly Update — JavaScript Arrays and Dynamic Content**
+
+###\. Main Changes
+
+- Created a separate script.js file and linked it to index.html.
+- Created seven objects representing a sample week of guitar practice.
+- Replaced the hard-coded weekly records with dynamically generated content.
+- Added the original logo, menu icon, guitar, record, and sticker images.
+- Organized the page into a single vertical layout matching the mobile mockup.
+
+###\. Data Displayed
+
+The practiceWeek array contains seven daily practice records.
+
+Each object includes:
+
+- day: the full name of the day
+- shortLabel: the letter displayed above the daily marker
+- status: the practice status
+- completed: whether practice was completed
+- today: whether the record represents the sample current day
+
+The data is based on the mockup. It displays four completed days and Saturday in progress.
+
+###\. How JavaScript Creates the HTML
+
+The script selects the week-container element using getElementById().
+
+A forEach() loop goes through the practiceWeek array. For each object, document.createElement() creates an li and two span elements.
+
+The script uses textContent to set the day label and status marker. It adds classes and attributes, then uses appendChild() to insert the generated elements into the container.
+
+The script also counts the completed days and displays the weekly total.
+
+Keeping data in an array allows the weekly content to be updated without rewriting repeated HTML.
+
+###\. Challenges and Solutions
+
+Combining earlier styles with new layout changes created conflicting CSS rules. Incomplete removal of the desktop layout also left an unmatched brace.
+
+I resolved this with assistance by consolidating the CSS into one vertical layout and removing leftover desktop rules. I also removed an extra closing section tag and invalid nested comments from the HTML.
+
+###\. Goals Before Next Week
+
+- Add interactive exercise completion.
+- Connect exercise completion to weekly progress.
+- Explore saving practice and reflection choices between visits.
