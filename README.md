@@ -77,6 +77,10 @@ A cold start takes **1–3 minutes**. Here's why:
 
 ## **Weekly Update — JavaScript Arrays and Dynamic Content**
 
+###\.Latest Mockup
+
+     View the latest mockup
+
 ###\. Main Changes
 
 - Created a separate script.js file and linked it to index.html.
