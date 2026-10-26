@@ -107,6 +107,15 @@ practiceWeek.forEach((record) => {
 // DISPLAY THE TOTAL
 weeklyTotal.textContent = `${completedDays} days practiced`;
 
+// Find the day marked as today in the array.
+const todayRecord = practiceWeek.find((record) => record.today);
+
+const todayLabel = document.getElementById("today-label");
+
+todayLabel.textContent = todayRecord
+  ? `Today: ${todayRecord.day}`
+  : "No current day selected";
+
 // MOBILE NAVIGATION
 const menuButton = document.querySelector(".menu-toggle");
 const navigation = document.getElementById("main-navigation");

@@ -75,11 +75,12 @@ A cold start takes **1–3 minutes**. Here's why:
 
 ## **Weekly Update — JavaScript Arrays and Dynamic Content**
 
-###\.Latest Mockup
+### Latest Mockup
 
-     View the latest mockup
+     ### Latest Mockup
+     [View the latest mockup](mockups/guitar-daily-mobile.pdf)
 
-###\. Main Changes
+### Main Changes
 
 - Created a separate script.js file and linked it to index.html.
 - Created seven objects representing a sample week of guitar practice.
@@ -87,7 +88,7 @@ A cold start takes **1–3 minutes**. Here's why:
 - Added the original logo, menu icon, guitar, record, and sticker images.
 - Organized the page into a single vertical layout matching the mobile mockup.
 
-###\. Data Displayed
+### Data Displayed
 
 The practiceWeek array contains seven daily practice records.
 
@@ -101,7 +102,7 @@ Each object includes:
 
 The data is based on the mockup. It displays four completed days and Saturday in progress.
 
-###\. How JavaScript Creates the HTML
+### How JavaScript Creates the HTML
 
 The script selects the week-container element using getElementById().
 
@@ -113,13 +114,13 @@ The script also counts the completed days and displays the weekly total.
 
 Keeping data in an array allows the weekly content to be updated without rewriting repeated HTML.
 
-###\. Challenges and Solutions
+### Challenges and Solutions
 
 Combining earlier styles with new layout changes created conflicting CSS rules. Incomplete removal of the desktop layout also left an unmatched brace.
 
 I resolved this with assistance by consolidating the CSS into one vertical layout and removing leftover desktop rules. I also removed an extra closing section tag and invalid nested comments from the HTML.
 
-###\. Goals Before Next Week
+### Goals Before Next Week
 
 - Add interactive exercise completion.
 - Connect exercise completion to weekly progress.
@@ -127,14 +128,15 @@ I resolved this with assistance by consolidating the CSS into one vertical layou
 
 ## Structure Audit — October 26, 2026
 
-###\.Fixed today:
+### Fixed today:
+
 -Fixed the sizing and responsiveness of certain fonts.
 
-###\.Still missing:
+### Still missing:
 
 - Confirm the required desktop layout.
 - Add any missing section or content found during the audit.
 
-###\.One thing I couldn't figure out:
+### One thing I couldn't figure out:
 
 - My current page follows the 375px mobile mockup. Should I also implement the desktop layout before the next layout assignment?
