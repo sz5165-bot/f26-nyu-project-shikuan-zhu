@@ -191,4 +191,4 @@ The desktop page still shows the Daily Reflection heading, unlike the mockup. Ty
 
 AI helped me review the code and understand why Grid only arranges direct children. Comparing the changes also clarified when to use Grid for layout and Flexbox for component rows.
 
-////////////
+/////////////
