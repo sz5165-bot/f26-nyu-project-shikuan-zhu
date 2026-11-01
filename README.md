@@ -77,8 +77,8 @@ A cold start takes **1–3 minutes**. Here's why:
 
 ### Latest Mockup
 
-     ### Latest Mockup
-     [View the latest mockup](mockups/guitar-daily-mobile.pdf)
+### Latest Mockup
+[View the latest mockup](mockups/guitar-daily-mobile.pdf)
 
 ### Main Changes
 
@@ -126,7 +126,7 @@ I resolved this with assistance by consolidating the CSS into one vertical layou
 - Connect exercise completion to weekly progress.
 - Explore saving practice and reflection choices between visits.
 
-## Structure Audit — October 26, 2026
+## **Structure Audit — October 26, 2026**
 
 ### Fixed today:
 
@@ -140,3 +140,15 @@ I resolved this with assistance by consolidating the CSS into one vertical layou
 ### One thing I couldn't figure out:
 
 - My current page follows the 375px mobile mockup. Should I also implement the desktop layout before the next layout assignment?
+
+## Layout Audit
+
+This checklist is based on my current repository review.
+Additional items from my classroom audit should be added here.
+
+- [x] Confirm that all six designed sections exist.
+- [x] Confirm that the weekly records are generated from an array.
+- [x] Fix the README headings and mockup link.
+- [ ] Add Grid to the page, Hero and practice cards.
+- [ ] Implement the responsive changes annotated in Assignment 4.
+- [ ] Check horizontal overflow at 375px and 1440px.

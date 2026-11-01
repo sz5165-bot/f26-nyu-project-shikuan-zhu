@@ -544,3 +544,296 @@ button:focus-visible {
   text-align: center;
   font-size: 14px;
 }
+
+/* === RESPONSIVE LAYOUT === */
+
+/* MOBILE PRACTICE HEADER */
+.practice-heading-row h2 {
+  margin-bottom: 12px;
+}
+
+.practice-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.practice-stats p:first-child {
+  font-family: var(--font-heading);
+  font-size: 20px;
+}
+
+.practice-stats p:last-child {
+  font-size: 14px;
+}
+
+/* TABLET: keep one column, with more space */
+@media (min-width: 600px) and (max-width: 1023px) {
+  body {
+    max-width: 640px;
+    padding: 24px;
+  }
+
+  .hero-art {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+  /* Expand beyond the old 375px mobile width. */
+  body {
+    max-width: 1280px;
+    padding: 32px;
+  }
+
+  /* HEADER */
+  .site-header {
+    padding-bottom: 24px;
+  }
+
+  .brand {
+    gap: 16px;
+    font-size: 36px;
+  }
+
+  .brand-logo {
+    width: 44px;
+    height: 56px;
+  }
+
+  /* Hide hamburger button. */
+  .menu-toggle {
+    display: none;
+  }
+
+  /* Show navigation permanently on desktop. */
+  #main-navigation,
+  #main-navigation.is-open {
+    display: block;
+    position: static;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  .navigation-list {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .navigation-list a {
+    padding: 4px 24px;
+    border-radius: 32px;
+    font-family: var(--font-heading);
+    font-size: 24px;
+    white-space: nowrap;
+  }
+
+  .navigation-list .current-link {
+    background: var(--color-primary);
+    color: var(--color-background);
+  }
+
+  /* MAIN PAGE GRID */
+  main {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 24px;
+  }
+
+  main > section {
+    min-width: 0;
+  }
+
+  /* Hero and practice occupy the entire page width. */
+  .hero,
+  #practice {
+    grid-column: 1 / -1;
+  }
+
+  /* HERO: text left, artwork right */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    align-items: center;
+    gap: 48px;
+    padding-top: 32px;
+  }
+
+  h1 {
+    font-size: clamp(64px, 5.6vw, 80px);
+    line-height: 1.12;
+  }
+
+  .eyebrow {
+    font-size: 16px;
+  }
+
+  .hero-description {
+    font-size: 18px;
+    margin-bottom: 24px;
+  }
+
+  .hero-action {
+    width: 280px;
+    max-width: 100%;
+  }
+
+  .hero-art {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* PRACTICE: three equal columns */
+  #practice {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 24px;
+    padding-top: 24px;
+  }
+
+  /* Title left, practice statistics right */
+  .practice-heading-row {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 16px;
+  }
+
+  .practice-heading-row h2 {
+    margin: 0;
+    font-size: 48px;
+  }
+
+  .practice-stats {
+    justify-content: flex-end;
+    gap: 0;
+    margin: 0;
+    color: var(--color-primary);
+  }
+
+  .practice-stats p:first-child,
+  .practice-stats p:last-child {
+    font-family: var(--font-body);
+    font-size: 16px;
+    white-space: nowrap;
+  }
+
+  .practice-stats strong {
+    font-weight: 400;
+  }
+
+  /* Desktop summary: 1 / 3 complete / 15 min total */
+  .practice-stats p + p::before {
+    content: " / ";
+    white-space: pre;
+  }
+
+  /* Full-width progress bar */
+  #daily-progress {
+    grid-column: 1 / -1;
+    background: var(--color-surface);
+  }
+
+  #daily-progress::-webkit-progress-bar {
+    background: var(--color-surface);
+  }
+
+  /* Equal-height exercise cards */
+  .practice-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+    padding: 20px;
+  }
+
+  .practice-card h3 {
+    font-size: 32px;
+  }
+
+  .practice-card > p {
+    margin-bottom: 24px;
+    font-size: 16px;
+  }
+
+  .practice-card-footer {
+    margin-top: auto;
+  }
+
+  /* BOTTOM ROW: plan, week, reflection */
+  #plan,
+  #week,
+  #reflection {
+    display: flex;
+    flex-direction: column;
+    padding-top: 32px;
+  }
+
+  #plan h2,
+  #week h2 {
+    margin-bottom: 20px;
+    font-size: 32px;
+  }
+
+  #plan .panel,
+  #week .panel {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 200px;
+    padding: 20px;
+  }
+
+  .plan-actions,
+  .week-summary {
+    margin-top: auto;
+    padding-top: 24px;
+  }
+
+  .day-mark {
+    height: 64px;
+  }
+
+  /* Desktop reference hides the Daily Reflection heading.
+     Keep it available to screen readers. */
+  #reflection > h2 {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  #reflection .panel {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 20px;
+  }
+
+  .panel .reflection-message {
+    margin-bottom: 24px;
+    font-size: 48px;
+  }
+
+  .reflection-options {
+    margin-top: auto;
+  }
+
+  .site-footer {
+    padding-top: 24px;
+  }
+}
