@@ -76,9 +76,9 @@ A cold start takes **1–3 minutes**. Here's why:
 ## **Weekly Update — JavaScript Arrays and Dynamic Content**
 
 ### Latest Mockup
-
-### Latest Mockup
 [View the latest mockup](mockups/guitar-daily-mobile.pdf)
+[Mobile mockup — 370px](mockups/mobile-370.jpg)
+[Desktop mockup — 1440px](mockups/desktop-1440.jpg)
 
 ### Main Changes
 
@@ -152,3 +152,43 @@ Additional items from my classroom audit should be added here.
 - [ ] Add Grid to the page, Hero and practice cards.
 - [ ] Implement the responsive changes annotated in Assignment 4.
 - [ ] Check horizontal overflow at 375px and 1440px.
+
+/////////////////////
+
+## Weekly Update — CSS Grid and Responsive Layout
+
+### Main Changes
+
+- Added named Grid areas for the page layout.
+- Used Grid for the Hero and three practice cards.
+- Added responsive layouts while keeping the JavaScript weekly records.
+
+### Layout Decisions
+
+Mobile uses one column. Desktop places the Hero text beside the artwork, displays the practice cards in a row, and arranges the three supporting sections in columns.
+
+The cards use auto-fit and minmax() to adjust to available space. Navigation, card footers and button groups use Flexbox for single-row alignment. Text remains in normal flow.
+
+### Responsive Changes
+
+Following my Assignment 4 annotations, I chose 1024px for the desktop layout. A tablet query adds space between 600px and 1023px.
+
+### Challenges and Solutions
+
+I removed duplicate desktop media queries and fixed the card wrapper so all three cards are direct children of the Grid container.
+
+### Remaining Work
+
+The desktop page still shows the Daily Reflection heading, unlike the mockup. Typography, artwork spacing and horizontal overflow need browser checks at 375px and 1440px.
+
+### Next Goals
+
+- Finish browser checks and spacing adjustments.
+- Create the 1440px comparison screenshot.
+- Plan interactive exercise completion.
+
+### AI Assistance
+
+AI helped me review the code and understand why Grid only arranges direct children. Comparing the changes also clarified when to use Grid for layout and Flexbox for component rows.
+
+////////////
