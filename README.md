@@ -76,6 +76,7 @@ A cold start takes **1–3 minutes**. Here's why:
 ## **Weekly Update — JavaScript Arrays and Dynamic Content**
 
 ### Latest Mockup
+
 [View the latest mockup](mockups/guitar-daily-mobile.pdf)
 [Mobile mockup — 370px](mockups/mobile-370.jpg)
 [Desktop mockup — 1440px](mockups/desktop-1440.jpg)
@@ -149,11 +150,11 @@ Additional items from my classroom audit should be added here.
 - [x] Confirm that all six designed sections exist.
 - [x] Confirm that the weekly records are generated from an array.
 - [x] Fix the README headings and mockup link.
-- [ ] Add Grid to the page, Hero and practice cards.
-- [ ] Implement the responsive changes annotated in Assignment 4.
+- [x] Add Grid to the page, Hero and practice cards.
+- [x] Implement the responsive changes annotated in Assignment 4.
 - [ ] Check horizontal overflow at 375px and 1440px.
 
-/////////////////////
+---
 
 ## Weekly Update — CSS Grid and Responsive Layout
 
@@ -191,4 +192,4 @@ The desktop page still shows the Daily Reflection heading, unlike the mockup. Ty
 
 AI helped me review the code and understand why Grid only arranges direct children. Comparing the changes also clarified when to use Grid for layout and Flexbox for component rows.
 
-/////////////
+---
