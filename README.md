@@ -1,3 +1,41 @@
+# Guitar Daily
+
+**Latest mockups:** [Mobile](mockups/mobile-370.jpg) · [Desktop](mockups/desktop-1440.jpg)  
+**Live site:** Not published yet.
+
+## Project Log
+
+### Week 8 — November 8, 2026
+
+**State Plan**
+
+- **User story:** As a beginner guitar player, I want to mark each exercise complete so I can see what I still need to practice today.
+- **What does the page remember?** The number of completed exercises, stored in `practiceStepsCompleted`.
+- **What does it start at?** 1 out of 3, matching the mockup where Chords is already complete.
+- **What changes it?** Clicking **Mark complete** on the current exercise card.
+- **What does the user see?** The card turns green, gains a checkmark, and shows **Completed**. The count and progress bar update.
+- **What does the `if/else` decide?** If all three exercises are complete, show the final count. Otherwise, enable the next exercise’s button.
+
+**What changed:** I moved the completion controls into the existing status area of the Rhythm and Song Section cards.
+
+**What was hard, and what I tried:** My first approach added a button and message below the cards, which took up extra space. I moved the controls into the cards and reused the mockup’s green completion style.
+
+**What happened when I tried to break it:** In an AI-assisted simulation, trying Song Section first kept the count at 1. Repeating Rhythm after completing it kept the count at 2. Once both exercises were complete, repeated actions could not push the count past 3. Live Server testing is still pending.
+
+**What I learned or changed my mind about:** Updating a variable does not automatically update the page. I had to use the new count to update the progress bar, the card and the next button.
+
+**Question for Joey:** My page goes back to 1 / 3 when I refresh it. If I save the completed count in the browser, how can I use it to restore the cards and buttons without saving each visual change separately?
+
+I use practiceStepsCompleted - 1 to find the next button because Chords starts out complete and has no button. If I add more exercises later or let users complete them in any order, how should I change the way I track progress?
+
+**Next week's goal:** Save daily progress between visits and explore connecting it to the weekly record.
+
+**AI use:** **AI use:** I used AI to help debug problems I couldn’t solve on my own. After I moved the buttons into the practice cards, I wasn’t sure why the progress stopped updating. I shared my code and asked AI to explain where the HTML and JavaScript no longer matched. I learned that my script was still looking for a button I had removed. 
+
+I updated the code to use the new buttons and asked AI to help me check what would happen if someone clicked twice or tried to skip an exercise.
+
+------------------------
+
 ## **Instructions**
 
 ### **Step-by-Step: Getting Set Up**
