@@ -144,7 +144,7 @@
   <h2 id="practice-heading">Today’s 3 Steps</h2>
 
   <div class="practice-stats">
-    <p><strong>1 / 3 complete</strong></p>
+    <p><strong id="practice-count">1 / 3 complete</strong></p>
     <p>15 min total</p>
   </div>
 </div>
@@ -174,7 +174,7 @@
         </article>
 
         <!-- RHYTHM EXERCISE -->
-        <article class="practice-card card-surface">
+        <article id="rhythm-card" class="practice-card card-surface">
           <h3>Rhythm</h3>
 
           <p>
@@ -189,7 +189,7 @@
         </article>
 
         <!-- SONG SECTION EXERCISE -->
-        <article class="practice-card card-accent">
+        <article id="song-section-card" class="practice-card card-accent">
           <h3>Song Section</h3>
 
           <p>
@@ -204,6 +204,21 @@
         </article>
         
       </div>
+
+      <div class="practice-actions">
+  <button
+    id="complete-practice-step"
+    class="button button-primary"
+    type="button"
+  >
+    Mark Rhythm complete
+  </button>
+
+  <p id="practice-feedback" role="status">
+    Next exercise: Rhythm.
+  </p>
+</div>
+
       </section>
 
       <!-- YOUR PLAN SECTION -->

@@ -427,6 +427,32 @@ progress::-moz-progress-bar {
   font-size: 20px;
 }
 
+/* DAILY PRACTICE ACTIONS */
+.practice-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+#practice-feedback {
+  color: var(--color-text);
+}
+
+/* When all three exercises are complete, make the button look inactive. */
+#complete-practice-step:disabled {
+  background: var(--color-surface);
+  color: var(--color-text);
+  opacity: 1;
+}
+
+/* Highlight the completion message beside the disabled button. */
+#complete-practice-step:disabled + #practice-feedback {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
 /* PLAN */
 .panel {
   padding: 16px;

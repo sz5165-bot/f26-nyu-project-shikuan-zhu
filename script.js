@@ -1,3 +1,5 @@
+console.log("script.js is connected");
+
 // SAMPLE WEEKLY PRACTICE DATA
 // Seven objects satisfy the requirement of at least five items.
 const practiceWeek = [
@@ -158,3 +160,27 @@ document.addEventListener("keydown", (event) => {
     menuButton.focus();
   }
 });
+
+// DAILY PRACTICE PROGRESS
+// practiceStepsCompleted: players need to know how many exercises remain.
+let practiceStepsCompleted = 1;
+const totalPracticeSteps = 3;
+
+const completePracticeButton = document.getElementById("complete-practice-step");
+const practiceCount = document.getElementById("practice-count");
+const dailyProgress = document.getElementById("daily-progress");
+const practiceFeedback = document.getElementById("practice-feedback");
+const rhythmCard = document.getElementById("rhythm-card");
+const songSectionCard = document.getElementById("song-section-card");
+
+completePracticeButton.addEventListener("click", () => {
+  if (practiceStepsCompleted >= totalPracticeSteps) {
+    return;
+  }
+
+  practiceStepsCompleted += 1;
+  console.log("practiceStepsCompleted:", practiceStepsCompleted);
+
+  // UPDATE THE PAGE HERE
+});
+
