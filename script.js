@@ -166,21 +166,46 @@ document.addEventListener("keydown", (event) => {
 let practiceStepsCompleted = 1;
 const totalPracticeSteps = 3;
 
-const completePracticeButton = document.getElementById("complete-practice-step");
 const practiceCount = document.getElementById("practice-count");
 const dailyProgress = document.getElementById("daily-progress");
-const practiceFeedback = document.getElementById("practice-feedback");
-const rhythmCard = document.getElementById("rhythm-card");
-const songSectionCard = document.getElementById("song-section-card");
+const practiceStepButtons = document.querySelectorAll(
+  "#practice .practice-step-button"
+);
 
-completePracticeButton.addEventListener("click", () => {
-  if (practiceStepsCompleted >= totalPracticeSteps) {
+function completePracticeStep(event) {
+  const clickedButton = event.currentTarget;
+  const nextButton = practiceStepButtons[practiceStepsCompleted - 1];
+
+  // Count only the next exercise, once.
+  if (practiceStepsCompleted >= totalPracticeSteps || clickedButton !== nextButton) {
     return;
   }
 
   practiceStepsCompleted += 1;
   console.log("practiceStepsCompleted:", practiceStepsCompleted);
 
-  // UPDATE THE PAGE HERE
-});
+  const completedCard = clickedButton.closest(".practice-card");
+  completedCard.classList.remove("card-surface", "card-accent");
+  completedCard.classList.add("card-primary");
 
+  clickedButton.textContent = "Completed";
+  clickedButton.removeAttribute("aria-label");
+  clickedButton.disabled = true;
+
+  dailyProgress.value = practiceStepsCompleted;
+
+  if (practiceStepsCompleted === totalPracticeSteps) {
+    practiceCount.textContent = `${practiceStepsCompleted} / ${totalPracticeSteps} complete!`;
+  } else {
+    practiceCount.textContent = `${practiceStepsCompleted} / ${totalPracticeSteps} complete`;
+
+    const followingButton = practiceStepButtons[practiceStepsCompleted - 1];
+    followingButton.textContent = "Mark complete";
+    followingButton.setAttribute("aria-label", "Mark Song Section complete");
+    followingButton.disabled = false;
+  }
+}
+
+practiceStepButtons.forEach((button) => {
+  button.addEventListener("click", completePracticeStep);
+});

@@ -427,30 +427,36 @@ progress::-moz-progress-bar {
   font-size: 20px;
 }
 
-/* DAILY PRACTICE ACTIONS */
-.practice-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px;
-  margin-top: 24px;
+/* PRACTICE CARD STATUS BUTTONS */
+.practice-step-button {
+  position: relative;
+  align-self: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: right;
 }
 
-#practice-feedback {
-  color: var(--color-text);
+.practice-step-button:enabled {
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
-/* When all three exercises are complete, make the button look inactive. */
-#complete-practice-step:disabled {
-  background: var(--color-surface);
-  color: var(--color-text);
+/* Expand the click area without increasing the footer height. */
+.practice-step-button:enabled::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  height: 44px;
+  transform: translateY(-50%);
+}
+
+.practice-step-button:disabled {
   opacity: 1;
-}
-
-/* Highlight the completion message beside the disabled button. */
-#complete-practice-step:disabled + #practice-feedback {
-  color: var(--color-primary);
-  font-weight: 700;
 }
 
 /* PLAN */
