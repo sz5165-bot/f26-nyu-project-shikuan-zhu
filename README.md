@@ -16,6 +16,23 @@
 - **The `if` inside the loop:** Mark the sample day labeled “today” complete only when all three exercises are done. Keep the original status for every other day.
 - **What else `render()` works out:** Calculate the daily count and weekly total, update the progress bar, and enable the next exercise button.
 
+**What changed:**
+
+**Patching vs. rendering:** Last week, the click handler directly changed the card color, button label, and progress bar. This week, the handler records the completed exercise ID and calls `render()`. The same function runs on page load and after each valid click, so the cards, progress bar, and weekly record all reflect the same state.
+
+**What was hard, and what I tried:** I closed `render()` with `});` instead of `}`, which caused a syntax error. After fixing the closing brace, I added `render();` at the end of the script so the weekly list would appear before the first click.
+
+**What happened when I tried to break it:** When I initially attempted the "song section" in my code, the count showed as 1/3. After each operation was completed, no repetition of any practice was calculated. Moreover, the selection here is one-time and cannot be cancelled. The weekly list still remains at seven items until all three exercises are completed, and then the total number of days changes from four days to five days.
+
+**What I learned or changed my mind about:** I learned that I can store which exercises are complete and calculate the count whenever I draw the page. I also learned why I need to clear the weekly list before rebuilding it: otherwise, each call to `render()` would append another seven days.
+
+**Question for Joey:** If I save completed exercise IDs in `localStorage`, how should I reset today’s progress when the date changes while keeping yesterday’s result in the weekly record?
+
+**Next week's goal:** Save the daily progress, restore the data after refreshing, and then explore how to integrate the completed dates into the weekly records. And I also want to try setting the daily progress to a mode where it can be cancelled by simply clicking again here. Further consideration is needed.
+
+**AI use:** I shared my code with AI when I couldn’t tell why the page wasn’t updating. I asked it to point out the exact lines causing the problem and explain the difference between a syntax error and a function that was defined but never called on page load. I also used AI to simulate repeated and out-of-order clicks.
+
+
 ### Week 8 — November 8, 2026
 
 **State Plan**

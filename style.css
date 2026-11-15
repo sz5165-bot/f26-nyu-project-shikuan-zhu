@@ -524,7 +524,7 @@ progress::-moz-progress-bar {
   color: var(--color-background);
 }
 
-.week-day.is-today .day-mark {
+.week-day.is-today:not(.is-complete) .day-mark {
   border: 1px solid var(--color-accent);
   color: var(--color-accent);
 }
