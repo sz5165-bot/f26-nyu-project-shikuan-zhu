@@ -5,6 +5,17 @@
 
 ## Project Log
 
+### Week 9 — November 15, 2026
+
+**Render Plan**
+
+- **User story:** As a beginner guitarist, I want my exercise cards and progress totals to stay in sync so I know what I still need to practice.
+- **State:** Replace the click counter with a `Set` of completed exercise IDs, starting with `chords`.
+- **What changes it:** Keep Rhythm → Song Section in order. Each valid click adds that exercise’s ID and calls `render()`.
+- **What `render()` draws:** Move the card updates and weekly list into `render()`. Call it on page load and after each valid click. Clear the old list before looping through `practiceWeek`.
+- **The `if` inside the loop:** Mark the sample day labeled “today” complete only when all three exercises are done. Keep the original status for every other day.
+- **What else `render()` works out:** Calculate the daily count and weekly total, update the progress bar, and enable the next exercise button.
+
 ### Week 8 — November 8, 2026
 
 **State Plan**
@@ -190,9 +201,9 @@ Additional items from my classroom audit should be added here.
 - [x] Fix the README headings and mockup link.
 - [x] Add Grid to the page, Hero and practice cards.
 - [x] Implement the responsive changes annotated in Assignment 4.
-- [ ] Check horizontal overflow at 375px and 1440px.
+- [x] Check horizontal overflow at 375px and 1440px.
 
----
+--- 
 
 ## Weekly Update — CSS Grid and Responsive Layout
 

@@ -54,70 +54,6 @@ const practiceWeek = [
   }
 ];
 
-// GET THE WEEKLY RECORD CONTAINER
-const weekContainer = document.getElementById("week-container");
-const weeklyTotal = document.getElementById("weekly-total");
-
-let completedDays = 0;
-
-// CREATE THE SEVEN DAILY RECORDS
-practiceWeek.forEach((record) => {
-  const listItem = document.createElement("li");
-  const dayLabel = document.createElement("span");
-  const dayMark = document.createElement("span");
-
-  // Set classes and attributes.
-  listItem.classList.add("week-day");
-
-  listItem.setAttribute(
-    "aria-label",
-    `${record.day}: ${record.status}`
-  );
-
-  listItem.setAttribute("data-day", record.day);
-
-  dayLabel.classList.add("day-label");
-  dayMark.classList.add("day-mark");
-
-  // The full accessible description is on the list item.
-  dayLabel.setAttribute("aria-hidden", "true");
-  dayMark.setAttribute("aria-hidden", "true");
-
-  // Set visible content.
-  dayLabel.textContent = record.shortLabel;
-
-  if (record.completed) {
-    dayMark.textContent = "✓";
-    listItem.classList.add("is-complete");
-    completedDays += 1;
-  } else if (record.today) {
-    dayMark.textContent = "·";
-  } else {
-    dayMark.textContent = "–";
-  }
-
-  if (record.today) {
-    listItem.classList.add("is-today");
-  }
-
-  // Assemble the record and insert it into the page.
-  listItem.appendChild(dayLabel);
-  listItem.appendChild(dayMark);
-  weekContainer.appendChild(listItem);
-});
-
-// DISPLAY THE TOTAL
-weeklyTotal.textContent = `${completedDays} days practiced`;
-
-// Find the day marked as today in the array.
-const todayRecord = practiceWeek.find((record) => record.today);
-
-const todayLabel = document.getElementById("today-label");
-
-todayLabel.textContent = todayRecord
-  ? `Today: ${todayRecord.day}`
-  : "No current day selected";
-
 // MOBILE NAVIGATION
 const menuButton = document.querySelector(".menu-toggle");
 const navigation = document.getElementById("main-navigation");
@@ -161,51 +97,126 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-// DAILY PRACTICE PROGRESS
-// practiceStepsCompleted: players need to know how many exercises remain.
-let practiceStepsCompleted = 1;
-const totalPracticeSteps = 3;
+// DAILY PRACTICE STATE
+const exerciseOrder = ["chords", "rhythm", "song-section"];
+const completedExercises = new Set(["chords"]);
 
+const practiceCards = document.querySelectorAll("#practice [data-exercise]");
 const practiceCount = document.getElementById("practice-count");
 const dailyProgress = document.getElementById("daily-progress");
-const practiceStepButtons = document.querySelectorAll(
-  "#practice .practice-step-button"
-);
+const weekContainer = document.getElementById("week-container");
+const weeklyTotal = document.getElementById("weekly-total");
+const todayLabel = document.getElementById("today-label");
 
-function completePracticeStep(event) {
-  const clickedButton = event.currentTarget;
-  const nextButton = practiceStepButtons[practiceStepsCompleted - 1];
+// render: updates the exercise cards, daily progress and seven-day practice record from state.
+function render() {
+  const total = exerciseOrder.length;
+  const completedCount = exerciseOrder.filter(
+    (id) => completedExercises.has(id)
+  ).length;
+  const nextExercise = exerciseOrder.find(
+    (id) => !completedExercises.has(id)
+  );
+  const dayIsComplete = completedCount === total;
 
-  // Count only the next exercise, once.
-  if (practiceStepsCompleted >= totalPracticeSteps || clickedButton !== nextButton) {
-    return;
-  }
+  // Draw each exercise card from its ID.
+  practiceCards.forEach((card) => {
+    const id = card.dataset.exercise;
+    const isComplete = completedExercises.has(id);
 
-  practiceStepsCompleted += 1;
-  console.log("practiceStepsCompleted:", practiceStepsCompleted);
+    card.classList.toggle("card-primary", isComplete);
+    card.classList.toggle("card-surface", !isComplete && id === "rhythm");
+    card.classList.toggle("card-accent", !isComplete && id === "song-section");
 
-  const completedCard = clickedButton.closest(".practice-card");
-  completedCard.classList.remove("card-surface", "card-accent");
-  completedCard.classList.add("card-primary");
+    const button = card.querySelector(".practice-step-button");
+    if (!button) return; // Chords already has a static Completed label.
 
-  clickedButton.textContent = "Completed";
-  clickedButton.removeAttribute("aria-label");
-  clickedButton.disabled = true;
+    const isNext = id === nextExercise;
+    button.disabled = !isNext;
 
-  dailyProgress.value = practiceStepsCompleted;
+    if (isComplete) {
+      button.textContent = "Completed";
+    } else if (isNext) {
+      button.textContent = "Mark complete";
+    } else {
+      button.textContent = "Ready to start";
+    }
 
-  if (practiceStepsCompleted === totalPracticeSteps) {
-    practiceCount.textContent = `${practiceStepsCompleted} / ${totalPracticeSteps} complete!`;
-  } else {
-    practiceCount.textContent = `${practiceStepsCompleted} / ${totalPracticeSteps} complete`;
+    if (isNext) {
+      const title = card.querySelector("h3").textContent.trim();
+      button.setAttribute("aria-label", `Mark ${title} complete`);
+    } else {
+      button.removeAttribute("aria-label");
+    }
+  });
 
-    const followingButton = practiceStepButtons[practiceStepsCompleted - 1];
-    followingButton.textContent = "Mark complete";
-    followingButton.setAttribute("aria-label", "Mark Song Section complete");
-    followingButton.disabled = false;
-  }
+  // Calculate the count and progress bar from the same state.
+  practiceCount.textContent =
+    `${completedCount} / ${total} complete${dayIsComplete ? "!" : ""}`;
+  dailyProgress.max = total;
+  dailyProgress.value = completedCount;
+
+  // Clear the previous list before drawing the seven days again.
+  weekContainer.replaceChildren();
+  let completedDays = 0;
+  let todayText = "No current day selected";
+
+  practiceWeek.forEach((record) => {
+    let isComplete = record.completed;
+    let status = record.status;
+
+    // Only the sample day marked as today follows the exercise state.
+    if (record.today) {
+      isComplete = dayIsComplete;
+      status = isComplete ? "Completed" : "In progress";
+      todayText = `Today: ${record.day}`;
+    }
+
+    const item = document.createElement("li");
+    item.classList.add("week-day");
+    item.setAttribute("data-day", record.day);
+    item.setAttribute("aria-label", `${record.day}: ${status}`);
+    item.classList.toggle("is-today", record.today);
+
+    const label = document.createElement("span");
+    label.classList.add("day-label");
+    label.setAttribute("aria-hidden", "true");
+    label.textContent = record.shortLabel;
+
+    const mark = document.createElement("span");
+    mark.classList.add("day-mark");
+    mark.setAttribute("aria-hidden", "true");
+
+    if (isComplete) {
+      mark.textContent = "✓";
+      item.classList.add("is-complete");
+      completedDays += 1;
+    } else {
+      mark.textContent = record.today ? "·" : "–";
+    }
+
+    item.appendChild(label);
+    item.appendChild(mark);
+    weekContainer.appendChild(item);
+  });
+
+  weeklyTotal.textContent = `${completedDays} days practiced`;
+  todayLabel.textContent = todayText;
 }
 
-practiceStepButtons.forEach((button) => {
-  button.addEventListener("click", completePracticeStep);
+practiceCards.forEach((card) => {
+  const button = card.querySelector(".practice-step-button");
+  if (!button) return;
+
+  button.addEventListener("click", () => {
+    const nextExercise = exerciseOrder.find(
+      (id) => !completedExercises.has(id)
+    );
+    if (card.dataset.exercise !== nextExercise) return;
+
+    completedExercises.add(card.dataset.exercise);
+    render();// Update the page after clicking
+  });
 });
+
+render();// Draw the initial state when the page loads
