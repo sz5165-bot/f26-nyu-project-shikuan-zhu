@@ -30,7 +30,7 @@ I use practiceStepsCompleted - 1 to find the next button because Chords starts o
 
 **Next week's goal:** Save daily progress between visits and explore connecting it to the weekly record.
 
-**AI use:** **AI use:** I used AI to help debug problems I couldn’t solve on my own. After I moved the buttons into the practice cards, I wasn’t sure why the progress stopped updating. I shared my code and asked AI to explain where the HTML and JavaScript no longer matched. I learned that my script was still looking for a button I had removed. 
+**AI use:** I used AI to help debug problems I couldn’t solve on my own. After I moved the buttons into the practice cards, I wasn’t sure why the progress stopped updating. I shared my code and asked AI to explain where the HTML and JavaScript no longer matched. I learned that my script was still looking for a button I had removed. 
 
 I updated the code to use the new buttons and asked AI to help me check what would happen if someone clicked twice or tried to skip an exercise.
 
